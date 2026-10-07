@@ -1,0 +1,28 @@
+{
+  "name": "inbox-verifier",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vercel-hosted Next.js app that checks Gmail for verification codes on a Vercel Cron schedule.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "token": "node scripts/get-refresh-token.mjs"
+  },
+  "dependencies": {
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}
