@@ -29,12 +29,14 @@ inbox-verifier/
 │  └─ page.tsx             # informational landing page
 ├─ lib/
 │  ├─ codes.ts             # verification-code detection
+│  ├─ codes.test.ts        # Vitest unit tests for the detector
 │  ├─ config.ts            # environment -> config
 │  ├─ gmail.ts             # Gmail REST client (token, list, get, labels)
 │  ├─ notify.ts            # Telegram / webhook dispatch
 │  └─ types.ts
 ├─ scripts/
 │  └─ get-refresh-token.mjs  # one-time OAuth helper
+├─ .github/workflows/ci.yml  # CI: typecheck, test, build
 ├─ .env.example
 ├─ next.config.mjs
 ├─ package.json
@@ -110,6 +112,20 @@ GMAIL_ACCOUNT_1_EMAIL=primary@gmail.com
 GMAIL_ACCOUNT_2_EMAIL=second@gmail.com
 GMAIL_ACCOUNT_3_EMAIL=third@gmail.com
 ```
+
+## Testing
+
+```bash
+npm test          # run the Vitest suite once
+npm run typecheck # TypeScript, no emit
+npm run build     # production build
+```
+
+`lib/codes.test.ts` covers the verification-code detector: numeric and
+alphanumeric codes, codes announced in the subject versus the body,
+de-duplication, and the false-positive cases (order numbers, tracking numbers,
+security alerts, marketing mail). CI runs typecheck, tests, and build on every
+push to `main`.
 
 ## Important notes
 
